@@ -20,7 +20,7 @@ spec:
         app: helloworld
     spec:
       containers:
-      - image: dkrizic/helloworld:1.0
+      - image: dkrizic/helloworld:1.3
         imagePullPolicy: IfNotPresent
         name: helloworld
         ports:
