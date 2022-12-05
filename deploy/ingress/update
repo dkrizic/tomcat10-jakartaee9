@@ -1,0 +1,2 @@
+#!/bin/bash
+helm -n ingress-nginx upgrade --install ingress-nginx -f ingress-nginx.yaml ingress-nginx/ingress-nginx 

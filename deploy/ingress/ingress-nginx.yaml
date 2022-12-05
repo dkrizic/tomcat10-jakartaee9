@@ -1,0 +1,9 @@
+defaultBackend:
+  enabled: true
+
+controller:
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+   
