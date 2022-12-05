@@ -15,4 +15,8 @@ spec:
             name: helloworld
             port:
               number: 80
+  tls:
+  - hosts:
+      - "helloworld.prodyna.wtf"
+    secretName: helloworld-tls
 
