@@ -26,6 +26,16 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+        envFrom:
+          - configMapRef:
+              name: config
+          - secretRef:
+              name: database
         livenessProbe:
           httpGet:
             path: /
@@ -45,3 +55,15 @@ spec:
           requests:
             memory: 500Mi
             cpu: 500m
+        volumeMounts:
+          - mountPath: /config
+            name: config
+          - mountPath: /database
+            name: database
+      volumes:
+        - name: config
+          configMap:
+            name: config
+        - name: database
+          secret:
+            secretName: database
