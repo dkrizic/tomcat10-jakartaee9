@@ -19,6 +19,15 @@ spec:
       labels:
         app: helloworld
     spec:
+      initContainers:
+      - name: copy-from-to-data-to-localdata
+        image: busybox
+        command: ['sh', '-c', 'cp -r /data/* /localdata/']
+        volumeMounts:
+          - mountPath: /data
+            name: data
+          - mountPath: /localdata
+            name: localdata
       containers:
       - image: dkrizic/helloworld:1.4
         imagePullPolicy: IfNotPresent
@@ -66,6 +75,8 @@ spec:
           - mountPath: /usr/local/tomcat/conf/server.xml
             name: config
             subPath: server.xml
+          - name: localdata
+            mountPath: /data
       volumes:
         - name: config
           configMap:
@@ -73,3 +84,9 @@ spec:
         - name: database
           secret:
             secretName: database
+        - name: data
+          persistentVolumeClaim:
+              claimName: data
+        - name: localdata
+          persistentVolumeClaim:
+            claimName: localdata
