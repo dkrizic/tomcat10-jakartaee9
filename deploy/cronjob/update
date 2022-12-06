@@ -1,0 +1,2 @@
+#!/bin/bash
+helm upgrade --install helloworld-restart -f helloworld-restart.yaml dkrizic/cronjob

@@ -1,0 +1,10 @@
+fullnameOverride: helloworld-restart
+cronjob:
+  schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 1
+  deployment: helloworld
+  command:
+    - 'kubectl'
+    - 'rollout'
+    - 'restart'
+    - 'statefulset helloworld'
