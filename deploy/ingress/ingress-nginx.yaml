@@ -9,3 +9,5 @@ controller:
   service:
     externalTrafficPolicy: Local   
 
+config:
+  enable-multi-accept: "false"
